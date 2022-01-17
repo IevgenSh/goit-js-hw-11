@@ -46,12 +46,10 @@ function onloadMoreClick() {
   pageNumber += 1;
   getImages(name, pageNumber).then((data) => {
     // console.log(data)
-    if ((data.totalHits / pageNumber) < 40) {
+    renderGallery(data.hits)
+    countFounding(data.totalHits)
+    if (data.hits.length < 40) {
       endOfSearch()
-    }
-    else {
-      renderGallery(data.hits)
-      countFounding(data.totalHits)
     }
 
     // console.log(data.totalHits / pageNumber)
